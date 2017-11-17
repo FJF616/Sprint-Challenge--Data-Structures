@@ -1,3 +1,38 @@
+class LinkedList{
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+  addToTail(value) {
+    const newNode = {
+      value,
+      next: null
+    };
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+  }
+  removeHead(node) {
+    if (!this.head) return null;
+    if (!this.head.next) this.tail = null;
+    const returnValue = this.head.value;
+    this.head = this.head.next;
+    return returnValue;
+  }
+  contains(value) {
+    let thisNode = this.head;
+    while (thisNode) {
+      if (thisNode.value === value) return true;
+      thisNode = thisNode.next;
+    }
+    return false;
+  }
+}
+
 // A special array class that can only store the number of items specified by the `limit` argument
 class LimitedArray {
   constructor(limit) {
